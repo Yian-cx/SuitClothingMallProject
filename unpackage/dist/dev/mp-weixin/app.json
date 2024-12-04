@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/home/outfit-detail",
+    "pages/shop/index",
+    "pages/shop/detail",
+    "pages/create/index",
+    "pages/messages/index",
+    "pages/messages/likes",
+    "pages/messages/favorites",
+    "pages/messages/follows",
+    "pages/messages/comments",
+    "pages/profile/index",
+    "pages/profile/settings",
+    "pages/profile/orders",
+    "pages/profile/cart",
+    "pages/profile/creator",
+    "pages/profile/history",
+    "pages/profile/my-items"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "时尚穿搭小程序",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "backgroundColor": "#065f5d",
+    "color": "#8a9491",
+    "selectedColor": "#f33e54",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/img/tabbar/home.png",
+        "selectedIconPath": "static/img/tabbar/homeactive.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "iconPath": "static/img/tabbar/guanzhu.png",
+        "selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+        "text": "商店"
+      },
+      {
+        "pagePath": "pages/create/index",
+        "iconPath": "static/img/tabbar/add.png",
+        "selectedIconPath": "static/img/tabbar/addactive.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "iconPath": "static/img/tabbar/news.png",
+        "selectedIconPath": "static/img/tabbar/newsactive.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "iconPath": "static/img/tabbar/me.png",
+        "selectedIconPath": "static/img/tabbar/meactive.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

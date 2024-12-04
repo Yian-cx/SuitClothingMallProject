@@ -1,0 +1,55 @@
+
+.container.data-v-e68d3657 {
+  padding: 20rpx;
+}
+.outfit-images.data-v-e68d3657 {
+  height: 500rpx;
+}
+.outfit-images image.data-v-e68d3657 {
+  width: 100%;
+  height: 100%;
+}
+.outfit-info.data-v-e68d3657 {
+  margin-top: 20rpx;
+}
+.outfit-title.data-v-e68d3657 {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.outfit-price.data-v-e68d3657 {
+  font-size: 28rpx;
+  color: #f00;
+  margin-top: 10rpx;
+}
+.outfit-actions.data-v-e68d3657 {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20rpx;
+}
+.outfit-description.data-v-e68d3657 {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.comments-section.data-v-e68d3657 {
+  margin-top: 40rpx;
+}
+.section-title.data-v-e68d3657 {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.comment.data-v-e68d3657 {
+  margin-bottom: 20rpx;
+}
+.comment-user.data-v-e68d3657 {
+  font-weight: bold;
+}
+.comment-input.data-v-e68d3657 {
+  display: flex;
+  margin-top: 20rpx;
+}
+.comment-input input.data-v-e68d3657 {
+  flex: 1;
+  border: 1rpx solid #ccc;
+  padding: 10rpx;
+}

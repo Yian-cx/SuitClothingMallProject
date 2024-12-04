@@ -1,0 +1,18 @@
+{
+    "vueVersion" : "3",
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
+        }
+    },
+	"h5": {
+	  "permissions": {
+	    "domain": [
+	      "https://example.com"
+	    ]
+	  }
+	}
+}

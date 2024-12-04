@@ -1,0 +1,193 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": true
+      }
+    },
+	{
+	  "path": "pages/home/outfit-detail",
+	  "style": {
+	    "navigationBarTitleText": "商品卡"
+	  }
+	},
+    {
+      "path": "pages/shop/index",
+      "style": {
+        "navigationBarTitleText": "购买"
+      }
+    },
+    {
+      "path": "pages/shop/detail",
+      "style": {
+        "navigationBarTitleText": "商品信息"
+      }
+    },
+	{
+	  "path": "pages/shop/review",
+	  "style": {
+	    "navigationBarTitleText": "商品评论"
+	  }
+	},
+	{
+	  "path": "pages/shop/payment",
+	  "style": {
+	    "navigationBarTitleText": "立即购买"
+	  }
+	},
+	{
+	  "path": "pages/shop/address-list",
+	  "style": {
+	    "navigationBarTitleText": "地址列表"
+	  }
+	},
+	{
+	  "path": "pages/shop/address-create",
+	  "style": {
+	    "navigationBarTitleText": "新建新地址"
+	  }
+	},
+    {
+      "path": "pages/create/index",
+      "style": {
+        "navigationBarTitleText": "发布商品卡"
+      }
+    },
+    {
+      "path": "pages/messages/index",
+      "style": {
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
+      "path": "pages/messages/likes",
+      "style": {
+        "navigationBarTitleText": "点赞消息"
+      }
+    },
+    {
+      "path": "pages/messages/favorites",
+      "style": {
+        "navigationBarTitleText": "收藏消息"
+      }
+    },
+    {
+      "path": "pages/messages/follows",
+      "style": {
+        "navigationBarTitleText": "关注消息"
+      }
+    },
+    {
+      "path": "pages/messages/comments",
+      "style": {
+        "navigationBarTitleText": "评论消息"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/profile/settings",
+      "style": {
+        "navigationBarTitleText": "编辑资料"
+      }
+    },
+    {
+      "path": "pages/profile/orders",
+      "style": {
+        "navigationBarTitleText": "订单管理"
+      }
+    },
+    {
+      "path": "pages/profile/cart",
+      "style": {
+        "navigationBarTitleText": "购物车"
+      }
+    },
+    {
+      "path": "pages/profile/creator",
+      "style": {
+        "navigationBarTitleText": "创造者中心"
+      }
+    },
+    {
+      "path": "pages/profile/history",
+      "style": {
+        "navigationBarTitleText": "浏览记录"
+      }
+    },
+    {
+      "path": "pages/profile/my-items",
+      "style": {
+        "navigationBarTitleText": "我的商品卡"
+      }
+    }
+  ],
+	"globalStyle": {
+	    "navigationBarTextStyle": "black",
+	    "navigationBarTitleText": "时尚穿搭小程序",
+	    "navigationBarBackgroundColor": "#F8F8F8",
+	    "backgroundColor": "#F8F8F8"
+	  },
+	"tabBar": {
+		"borderStyle": "black",
+		"backgroundColor": "#065f5d",
+		"color": "#8a9491",
+		"selectedColor": "#f33e54",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/img/tabbar/home.png",
+				"selectedIconPath": "static/img/tabbar/homeactive.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/shop/index",
+				"iconPath": "static/img/tabbar/guanzhu.png",
+				"selectedIconPath": "static/img/tabbar/guanzhuactive.png",
+				"text": "商店"
+			},
+			//#ifdef MP-WEIXIN
+			{
+				"pagePath": "pages/create/index",
+				"iconPath": "static/img/tabbar/add.png",
+				"selectedIconPath": "static/img/tabbar/addactive.png",
+				"text": "发布"
+			},
+			//#endif
+			//#ifndef MP-WEIXIN
+			{
+				"pagePath": "pages/create/index",
+				"iconPath": "static/img/tabbar/add.png",
+				"selectedIconPath": "static/img/tabbar/addactive.png"
+			},
+			//#endif
+			{
+				"pagePath": "pages/messages/index",
+				"iconPath": "static/img/tabbar/news.png",
+				"selectedIconPath": "static/img/tabbar/newsactive.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/profile/index",
+				"iconPath": "static/img/tabbar/me.png",
+				"selectedIconPath": "static/img/tabbar/meactive.png",
+				"text": "我的"
+			}
+		]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

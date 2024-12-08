@@ -1,139 +1,296 @@
 <template>
   <view class="container">
-    <!-- 功能区 -->
-<view class="function-bar">
-  <view class="function-item">
-    <image class="icon" src="https://img.icons8.com/color/48/heart.png" />
-    <text>赞和收藏</text>
-  </view>
-  <view class="function-item">
-    <image class="icon" src="https://img.icons8.com/color/48/add-user-male.png" />
-    <text>新增关注</text>
-  </view>
-  <view class="function-item">
-    <image class="icon" src="https://img.icons8.com/color/48/comments.png" />
-    <text>评论和@</text>
-  </view>
-</view>
 
-    <!-- 消息列表 -->
-    <view class="message-list">
-      <view class="message-item" v-for="(item, index) in messages" :key="index">
-        <image class="avatar" :src="item.avatar" />
-        <view class="message-info">
-          <text class="name">{{ item.name }}</text>
-          <text class="message">{{ item.message }}</text>
+    <!-- 消息类别 -->
+    <view class="message-categories">
+      <view class="category-item" @click="navigateToLikes">
+        <view class="category-icon likes">
+          <text class="icon">❤️</text>
         </view>
-        <text class="time">{{ item.time }}</text>
+        <text class="category-name">赞和收藏</text>
+      </view>
+      <view class="category-item" @click="navigateToFollows">
+        <view class="category-icon follows">
+          <text class="icon">👤</text>
+        </view>
+        <text class="category-name">新增关注</text>
+      </view>
+      <view class="category-item" @click="navigateToComments">
+        <view class="category-icon comments">
+          <text class="icon">💬</text>
+        </view>
+        <text class="category-name">评论和@</text>
       </view>
     </view>
+
+    <!-- 消息列表 -->
+    <scroll-view scroll-y class="message-list">
+      <!-- 系统消息 -->
+      <view class="message-item system" @click="handleSystemMessage">
+        <image class="avatar system-icon" src="/static/icons/system.png" mode="aspectFill" />
+        <view class="message-content">
+          <view class="message-header">
+            <text class="name">系统消息</text>
+            <text class="time">11-07</text>
+          </view>
+          <text class="preview">小红书诚邀您参与问卷小调研</text>
+        </view>
+      </view>
+
+      <!-- 活动消息 -->
+      <view class="message-item activity" @click="handleActivityMessage">
+        <image class="avatar activity-icon" src="/static/icons/activity.png" mode="aspectFill" />
+        <view class="message-content">
+          <view class="message-header">
+            <text class="name">活动消息</text>
+            <text class="time">11-05</text>
+          </view>
+          <text class="preview">生日专属流量券到！发笔记收获更多祝福</text>
+        </view>
+      </view>
+
+      <!-- 聊天消息 -->
+      <view 
+        v-for="chat in chatList" 
+        :key="chat.id" 
+        class="message-item chat"
+        @click="navigateToChat(chat)"
+      >
+        <image class="avatar" :src="chat.avatar" mode="aspectFill" />
+        <view class="message-content">
+          <view class="message-header">
+            <text class="name">{{ chat.name }}</text>
+            <text class="time">{{ chat.time }}</text>
+          </view>
+          <text class="preview">{{ chat.lastMessage }}</text>
+        </view>
+        <view v-if="chat.online" class="online-indicator"></view>
+      </view>
+    </scroll-view>
   </view>
-  
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-  data() {
+  setup() {
+    const chatList = ref([
+      {
+        id: 1,
+        name: '小河青青',
+        avatar: 'https://picsum.photos/100/100?random=1',
+        time: '10-26',
+        lastMessage: '今天在线',
+        online: true
+      },
+      {
+        id: 2,
+        name: '跨境可带（无偿领资料）',
+        avatar: 'https://picsum.photos/100/100?random=2',
+        time: '10-26',
+        lastMessage: '我们已相互关注，开始聊天吧🐷',
+        online: true
+      },
+      {
+        id: 3,
+        name: '薯',
+        avatar: 'https://picsum.photos/100/100?random=3',
+        time: '10-26',
+        lastMessage: '没有',
+        online: false
+      }
+    ])
+
+    const navigateToDiscover = () => {
+      uni.navigateTo({
+        url: '/pages/messages/discover'
+      })
+    }
+
+    const navigateToLikes = () => {
+      uni.navigateTo({
+        url: '/pages/messages/likes'
+      })
+    }
+
+    const navigateToFollows = () => {
+      uni.navigateTo({
+        url: '/pages/messages/follows'
+      })
+    }
+
+    const navigateToComments = () => {
+      uni.navigateTo({
+        url: '/pages/messages/comments'
+      })
+    }
+
+    const handleSystemMessage = () => {
+      uni.navigateTo({
+        url: '/pages/messages/system'
+      })
+    }
+
+    const handleActivityMessage = () => {
+      uni.navigateTo({
+        url: '/pages/messages/activity'
+      })
+    }
+
+    const navigateToChat = (chat) => {
+      uni.navigateTo({
+        url: `/pages/messages/chat?id=${chat.id}&name=${encodeURIComponent(chat.name)}`
+      })
+    }
+
     return {
-  messages: [
-    {
-      avatar: 'https://via.placeholder.com/100', // 测试用示例头像链接
-      name: '系统消息',
-      message: '小红书诚邀您参与问卷小调研',
-      time: '11-07',
-    },
-    {
-      avatar: 'https://via.placeholder.com/100',
-      name: '活动消息',
-      message: '生日专属流量券到账！',
-      time: '11-05',
-    },
-    {
-      avatar: 'https://via.placeholder.com/100',
-      name: '小河青青',
-      message: '今天在线',
-      time: '10-26',
-    },
-  ],
-    };
-  },
-};
+      chatList,
+      navigateToDiscover,
+      navigateToLikes,
+      navigateToFollows,
+      navigateToComments,
+      handleSystemMessage,
+      handleActivityMessage,
+      navigateToChat
+    }
+  }
+}
 </script>
 
-<style scoped>
+<style>
 .container {
-  padding: 10rpx;
-  background-color: #f8f8f8;
+  min-height: 100vh;
+  background: #f8f8f8;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-/* 功能区 */
-.function-bar {
+.header {
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.discover-btn {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.message-categories {
   display: flex;
   justify-content: space-around;
-  margin: 20rpx 0;
-  background-color: #ffffff;
-  border-radius: 12rpx;
-  padding: 20rpx 0;
+  padding: 30rpx 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.function-item {
+.category-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.icon {
-  width: 80rpx;
-  height: 80rpx;
+.category-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10rpx;
 }
 
-.function-item text {
-  font-size: 26rpx;
+.likes {
+  background: #ffeaea;
 }
 
-/* 消息列表 */
+.follows {
+  background: #e8f0ff;
+}
+
+.comments {
+  background: #e8fff0;
+}
+
+.category-name {
+  font-size: 24rpx;
+  color: #333;
+}
+
 .message-list {
-  margin-top: 20rpx;
-  background-color: #ffffff;
-  border-radius: 12rpx;
+  padding: 0 20rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .message-item {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
-  padding: 20rpx;
+  align-items: flex-start;
+  padding: 20rpx 0;
   border-bottom: 1rpx solid #f0f0f0;
-}
-
-.message-item:last-child {
-  border-bottom: none;
+  position: relative;
 }
 
 .avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   margin-right: 20rpx;
 }
 
-.message-info {
+.message-content {
   flex: 1;
 }
 
-.name {
-  font-size: 30rpx;
-  font-weight: bold;
-  margin-bottom: 10rpx;
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
 }
 
-.message {
-  color: #999999;
-  font-size: 26rpx;
+.name {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
 }
 
 .time {
   font-size: 24rpx;
-  color: #cccccc;
+  color: #999;
+}
+
+.preview {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.online-indicator {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  width: 12rpx;
+  height: 12rpx;
+  background: #4CAF50;
+  border-radius: 50%;
+}
+
+.system-icon, .activity-icon {
+  background: #4080ff;
 }
 </style>
+
